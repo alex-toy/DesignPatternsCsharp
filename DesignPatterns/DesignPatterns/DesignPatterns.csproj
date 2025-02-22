@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ChainOfResponsability\ChainOfResponsability.csproj" />
+    <ProjectReference Include="..\Visitor\Visitor.csproj" />
   </ItemGroup>
 
 </Project>
