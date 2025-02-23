@@ -4,6 +4,7 @@ using ChainOfResponsability.Bad;
 //using ChainOfResponsability.Good;
 using ChainOfResponsability.Generic;
 using ChainOfResponsability.Generic.Handlers;
+using Interpretor;
 using Visitor.Bad;
 using Visitor.Generic;
 using Visitor.Generic.Clients;
@@ -12,10 +13,9 @@ using Visitor.Generic.Visitors;
 
 //ChainResponsability();
 
-Visitor();
+//Visitor();
 
-
-
+Interpretor();
 
 static void ChainResponsability()
 {
@@ -58,4 +58,12 @@ static void Visitor()
         client.Accept(new EmailVisitor());
         client.Accept(new PDFExportVisitor());
     }
+}
+
+static void Interpretor()
+{
+    Interpreter interpretor = new(new Context());
+    Console.WriteLine(interpretor.Interpret("2 * 3"));
+    Console.WriteLine(interpretor.Interpret("2 * 3 + 6"));
+    Console.WriteLine(interpretor.Interpret("2 * 4 - 6"));
 }
