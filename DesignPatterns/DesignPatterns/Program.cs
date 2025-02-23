@@ -1,9 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using ChainOfResponsability;
 using ChainOfResponsability.Bad;
 //using ChainOfResponsability.Good;
 using ChainOfResponsability.Generic;
 using ChainOfResponsability.Generic.Handlers;
+using Composite.Good.Items;
+using Composite.Good.Structure;
+
+//using Composite.Bad;
 using Interpretor;
 using Visitor.Bad;
 using Visitor.Generic;
@@ -15,7 +20,9 @@ using Visitor.Generic.Visitors;
 
 //Visitor();
 
-Interpretor();
+//Interpretor();
+
+Composite();
 
 static void ChainResponsability()
 {
@@ -66,4 +73,22 @@ static void Interpretor()
     Console.WriteLine(interpretor.Interpret("2 * 3"));
     Console.WriteLine(interpretor.Interpret("2 * 3 + 6"));
     Console.WriteLine(interpretor.Interpret("2 * 4 - 6"));
+}
+
+static void Composite()
+{
+    var box1 = new Box();
+    box1.Add(new Keyboard());
+    box1.Add(new Mouse());
+
+    var box2 = new Box();
+    box2.Add(new Keyboard());
+    box2.Add(new Mouse());
+
+    var box = new Box();
+    box.Add(box1);
+    box.Add(box2);
+    //var price = box.GetPrice();
+    var price = box.GetPrice();
+    Console.WriteLine(price);
 }
