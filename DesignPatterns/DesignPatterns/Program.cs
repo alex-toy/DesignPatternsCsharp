@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Adapter;
+using Adapter.Adapters;
+using Adapter.Colors;
 using ChainOfResponsability;
 using ChainOfResponsability.Bad;
 //using ChainOfResponsability.Good;
@@ -22,7 +25,9 @@ using Visitor.Generic.Visitors;
 
 //Interpretor();
 
-Composite();
+//Composite();
+
+Adapter();
 
 static void ChainResponsability()
 {
@@ -91,4 +96,12 @@ static void Composite()
     //var price = box.GetPrice();
     var price = box.GetPrice();
     Console.WriteLine(price);
+}
+
+static void Adapter()
+{
+    VideoEditor editor = new(new Video());
+    editor.ApplyColor(new BlackAndWhiteColor());
+    editor.ApplyColor(new RainbowColor());
+    editor.ApplyColor(new VividColor());
 }
