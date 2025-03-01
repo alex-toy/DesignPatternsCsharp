@@ -3,6 +3,9 @@ using System.Runtime.CompilerServices;
 using Adapter;
 using Adapter.Adapters;
 using Adapter.Colors;
+using Bridge.Bad;
+using Bridge.Good;
+using Bridge.Good.Dimensions;
 using ChainOfResponsability;
 using ChainOfResponsability.Bad;
 //using ChainOfResponsability.Good;
@@ -27,7 +30,9 @@ using Visitor.Generic.Visitors;
 
 //Composite();
 
-Adapter();
+//Adapter();
+
+Bridge();
 
 static void ChainResponsability()
 {
@@ -104,4 +109,32 @@ static void Adapter()
     editor.ApplyColor(new BlackAndWhiteColor());
     editor.ApplyColor(new RainbowColor());
     editor.ApplyColor(new VividColor());
+}
+
+static void Bridge()
+{
+    Sony_Low_Basic_Remote badRemote1 = new();
+    badRemote1.TurnOn();
+    badRemote1.VolumeUp();
+
+    RemoteControl remote = new RemoteControl() { 
+        Brand = new Brand { Label = "sony" },
+        Power = new Power { Category = "low", Value = 87 },
+        Functionality = new Functionality { Label = "Basic" }, 
+    };
+    remote.TurnOn();
+    remote.VolumeUp();
+
+    LG_Medium_Advanced_Remote badRemote2 = new();
+    badRemote2.TurnOn();
+    badRemote2.VolumeUp();
+
+    RemoteControl remote2 = new RemoteControl()
+    {
+        Brand = new Brand { Label = "LG" },
+        Power = new Power { Category = "Medium", Value = 865 },
+        Functionality = new Functionality { Label = "advanced" },
+    };
+    remote2.TurnOn();
+    remote2.VolumeUp();
 }
