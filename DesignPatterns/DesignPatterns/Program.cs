@@ -17,6 +17,8 @@ using Composite.Good.Structure;
 //using Composite.Bad;
 using Interpretor;
 using Lookups;
+using Proxy.Bad;
+using Proxy.Bad.ThirdPartyVideoLib;
 using Visitor.Bad;
 using Visitor.Generic;
 using Visitor.Generic.Clients;
@@ -35,7 +37,9 @@ using Visitor.Generic.Visitors;
 
 //Bridge();
 
-Lookup();
+//Lookup();
+
+Proxy();
 
 static void ChainResponsability()
 {
@@ -205,7 +209,7 @@ static void Lookup()
     foreach (User user in users)
     {
         Console.WriteLine($"id {user.Id} - {user.Name}");
-        foreach(Achat achat in user.Achats)
+        foreach (Achat achat in user.Achats)
         {
             Console.WriteLine($"     {achat.Article.Title} : {achat.Quantite} * {achat.Article.Price} = {achat.Quantite * achat.Article.Price}");
         }
@@ -224,5 +228,15 @@ static void Lookup()
         {
             Console.WriteLine($"     {achat.User.Name} : {achat.Quantite} * {achat.Article.Price} = {achat.Quantite * achat.Article.Price}");
         }
+    }
+}
+
+static void Proxy()
+{
+    BadVideoList videoList = new BadVideoList();
+    string[] videoIds = ["v1", "v2", "v3"];
+    foreach (var videoId in videoIds)
+    {
+        videoList.Add(new BadYouTubeVideo(videoId));
     }
 }
