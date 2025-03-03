@@ -13,6 +13,7 @@
     <ProjectReference Include="..\ChainOfResponsability\ChainOfResponsability.csproj" />
     <ProjectReference Include="..\Composite\Composite.csproj" />
     <ProjectReference Include="..\Interpretor\Interpretor.csproj" />
+    <ProjectReference Include="..\Lookups\Lookups.csproj" />
     <ProjectReference Include="..\Visitor\Visitor.csproj" />
   </ItemGroup>
 
